@@ -7,7 +7,7 @@ export interface IDay {
 }
 
 export default function DayList() {
-  const days: IDay[] = useFetch("http://localhost:3001/days");
+  const days: IDay[] = useFetch("https://hagfish-true-promptly.ngrok-free.app/days");
 
   if (days.length === 0) {
     return <span>Loading...</span>;

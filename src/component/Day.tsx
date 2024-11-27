@@ -4,7 +4,7 @@ import Word, { IWord } from "./Word";
 
 export default function Day() {
   const { day } = useParams<{ day: string }>();
-  const words: IWord[] = useFetch(`http://localhost:3001/words?day=${day}`);
+  const words: IWord[] = useFetch(`https://hagfish-true-promptly.ngrok-free.app/words?day=${day}`);
 
   return (
     <>

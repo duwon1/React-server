@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { IDay } from "./DayList";
 
 export default function CreateWord() {
   const days: IDay[] = useFetch("http://localhost:3001/days");
-  const history = useHistory();
+  const history = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   function onSubmit(e: React.FormEvent) {
@@ -18,7 +18,7 @@ export default function CreateWord() {
       const eng = engRef.current.value;
       const kor = korRef.current.value;
 
-      fetch(`http://localhost:3001/words/`, {
+      fetch(`https://hagfish-true-promptly.ngrok-free.app/words/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function CreateWord() {
       }).then(res => {
         if (res.ok) {
           alert("생성이 완료 되었습니다");
-          history.push(`/day/${day}`);
+          history(`/day/${day}`);
           setIsLoading(false);
         }
       });
